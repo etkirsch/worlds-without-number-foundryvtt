@@ -10,19 +10,23 @@
 		"module/simple.js"
 	],
 	"styles": [
+		"css/wwn.css"
 	],
 	"scripts": [
 	],
 	"packs": [
 	],
-	"languages": [
-	],
+	"languages": [{
+		"lange": "en",
+		"name": "English",
+		"path": "lang/en.json"
+	}],
 	"gridDistance": 1,
 	"gridUnits": "yd",
 	"primaryTokenAttribute": "",
 	"secondaryTokenAttribute": "",
 	"url": "https://github.com/etkirsch/worlds-without-number-foundryvtt",
-	"manifest": "https://raw.githubusercontent.com/etkirsch/worlds-without-number-foundryvtt/main/system.json",
-	"download": "https://github.com/etkirsch/worlds-without-number-foundryvtt/archive/main.zip",
+	"manifest": "https://raw.githubusercontent.com/etkirsch/worlds-without-number-foundryvtt/items/system.json",
+	"download": "https://github.com/etkirsch/worlds-without-number-foundryvtt/archive/items.zip",
 	"license": "LICENSE"
 }

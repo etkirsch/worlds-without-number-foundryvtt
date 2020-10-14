@@ -1,3 +1,6 @@
+import BasicActorSheet from './actor-sheet.js'
+
 Hooks.once('init', async () => {
-	console.log('init')
+	Actors.unregisterSheet("core", ActorSheet)
+	Actors.registerSheet("wwn", BasicActorSheet, { makeDefault: true })
 })

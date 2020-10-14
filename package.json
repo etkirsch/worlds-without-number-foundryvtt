@@ -1,7 +1,7 @@
 {
   "name": "Worlds Without Number",
-  "version": "0.0.0",
-  "description": "CSS Compilation for Worlds Without Number -- does not contain scss support yet.",
+  "version": "0.0.1",
+  "description": "CSS Compilation for Worlds Without Number",
   "scripts": {
     "css": "gulp css",
     "watch": "gulp",
@@ -10,13 +10,13 @@
   "browserslist": [
     "last 3 versions"
   ],
-  "author": "",
+  "author": "Evan Kirsch",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-less": "^4.0.1"
+    "gulp": "^4.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp-sass": "^4.1.0"
+  }
 }
-
