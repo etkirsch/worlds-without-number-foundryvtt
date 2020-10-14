@@ -1,0 +1,28 @@
+{
+	"name": "worlds-without-number-foundryvtt",
+	"title": "Worlds Without Number",
+	"description": "FoundryVTT implementation of the Worlds Without Number system",
+	"version": "0.0",
+	"minimumCoreVersion": "0.6.6",
+	"compatibleCoreVersion": "0.6.6",
+	"author": "etkirsch",
+	"esmodules": [
+		"module/simple.js"
+	],
+	"styles": [
+	],
+	"scripts": [
+	],
+	"packs": [
+	],
+	"languages": [
+	],
+	"gridDistance": 1,
+	"gridUnits": "yd",
+	"primaryTokenAttribute": "",
+	"secondaryTokenAttribute": "",
+	"url": "https://github.com/etkirsch/worlds-without-number-foundryvtt",
+	"manifest": "https://raw.githubusercontent.com/etkirsch/worlds-without-number-foundryvtt/main/system.json",
+	"download": "https://github.com/etkirsch/worlds-without-number-foundryvtt/archive/main.zip",
+	"license": "LICENSE"
+}
