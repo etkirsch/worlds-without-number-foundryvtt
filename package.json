@@ -1,11 +1,9 @@
 {
-  "name": "Worlds Without Number",
+  "name": "worlds-without-number",
   "version": "0.0.1",
   "description": "CSS Compilation for Worlds Without Number",
   "scripts": {
-    "css": "gulp css",
-    "watch": "gulp",
-    "gulp": "gulp"
+    "test": "node test.js"
   },
   "browserslist": [
     "last 3 versions"
@@ -17,6 +15,19 @@
     "gulp": "^4.0.2"
   },
   "devDependencies": {
-    "gulp-sass": "^4.1.0"
+    "@babel/preset-env": "^7.12.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.5.2",
+    "gulp-sass": "^4.1.0",
+    "jest": "^26.5.3"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/module"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
   }
 }
