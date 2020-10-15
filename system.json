@@ -7,7 +7,7 @@
   "compatibleCoreVersion": "0.6.6",
   "author": "etkirsch",
   "esmodules": [
-    "module/simple.js"
+    "module/wwn.js"
   ],
   "styles": [
     "css/wwn.css"

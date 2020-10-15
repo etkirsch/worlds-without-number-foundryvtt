@@ -1,7 +1,14 @@
 { 
-  "Actor": {
-    "types": [],
-    "attributes": {},
-    "groups": {}
+  "Item": {
+    "types": [
+      "basicItem",
+      "itemModifier"
+    ],
+    "templates": {
+    },
+    "basicItem": {
+    },
+    "itemModifier": {
+    }
   }
 }
