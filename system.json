@@ -1,32 +1,32 @@
 {
-	"name": "worlds-without-number-foundryvtt",
-	"title": "Worlds Without Number",
-	"description": "FoundryVTT implementation of the Worlds Without Number system",
-	"version": "0.0",
-	"minimumCoreVersion": "0.6.6",
-	"compatibleCoreVersion": "0.6.6",
-	"author": "etkirsch",
-	"esmodules": [
-		"module/simple.js"
-	],
-	"styles": [
-		"css/wwn.css"
-	],
-	"scripts": [
-	],
-	"packs": [
-	],
-	"languages": [{
-		"lange": "en",
-		"name": "English",
-		"path": "lang/en.json"
-	}],
-	"gridDistance": 1,
-	"gridUnits": "yd",
-	"primaryTokenAttribute": "",
-	"secondaryTokenAttribute": "",
-	"url": "https://github.com/etkirsch/worlds-without-number-foundryvtt",
-	"manifest": "https://raw.githubusercontent.com/etkirsch/worlds-without-number-foundryvtt/items/system.json",
-	"download": "https://github.com/etkirsch/worlds-without-number-foundryvtt/archive/items.zip",
-	"license": "LICENSE"
+  "name": "worlds-without-number-foundryvtt",
+  "title": "Worlds Without Number",
+  "description": "FoundryVTT implementation of the Worlds Without Number system",
+  "version": "0.0",
+  "minimumCoreVersion": "0.6.6",
+  "compatibleCoreVersion": "0.6.6",
+  "author": "etkirsch",
+  "esmodules": [
+    "module/simple.js"
+  ],
+  "styles": [
+    "css/wwn.css"
+  ],
+  "scripts": [
+  ],
+  "packs": [
+  ],
+  "languages": [{
+    "lange": "en",
+    "name": "English",
+    "path": "lang/en.json"
+  }],
+  "gridDistance": 1,
+  "gridUnits": "yd",
+  "primaryTokenAttribute": "",
+  "secondaryTokenAttribute": "",
+  "url": "https://github.com/etkirsch/worlds-without-number-foundryvtt",
+  "manifest": "https://raw.githubusercontent.com/etkirsch/worlds-without-number-foundryvtt/items/system.json",
+  "download": "https://github.com/etkirsch/worlds-without-number-foundryvtt/archive/items.zip",
+  "license": "LICENSE"
 }
