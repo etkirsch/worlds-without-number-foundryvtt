@@ -7,7 +7,7 @@ export default class BasicCharacter extends TestableActorSheet {
   static get defaultOptions () {
     return {
       ...super.defaultOptions,
-      classes: ["sheet", "actor"],
+      classes: ["character"],
       template: `${actorTemplatePath}/basic-character.html`
     }
   }
