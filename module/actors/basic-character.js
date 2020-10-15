@@ -15,9 +15,7 @@ export default class BasicCharacter extends TestableActorSheet {
   getData () {
     debugger
     return {
-      vitals: {
-        health: 15
-      }
+      health: 15
     }
   }
 
