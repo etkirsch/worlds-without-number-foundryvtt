@@ -1,4 +1,12 @@
 { 
+  "Actor": {
+    "types": [
+      "character"
+    ],
+    "character": {
+      "health": 10
+    }
+  },
   "Item": {
     "types": [
       "basicItem",
