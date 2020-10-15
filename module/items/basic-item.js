@@ -9,4 +9,9 @@ export default class BasicItem extends TestableItemSheet {
       template: `${itemTemplatePath}/basic-item.html`
     }
   }
+
+  async _onSubmit (event, options) {
+    console.dir(event)
+    console.dir(options)
+  }
 }

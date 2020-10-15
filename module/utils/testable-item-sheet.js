@@ -4,6 +4,15 @@ class MockedItemSheet {
       sheetType: 'mocked'
     }
   }
+
+  getData () {
+    return {
+      basic: 'mockedGetDataResult'
+    }
+  }
+
+  async _onSubmit (event, options={}) {
+  }
 }
 
 export const TestableItemSheet = (typeof ItemSheet === 'undefined')
