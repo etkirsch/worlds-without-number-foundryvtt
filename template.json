@@ -3,8 +3,13 @@
     "types": [
       "character"
     ],
+    "templates": {
+      "vitals": {
+        "health": 10
+      }
+    },
     "character": {
-      "health": 10
+      "templates": ["vitals"]
     }
   },
   "Item": {
