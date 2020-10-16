@@ -1,8 +1,9 @@
 import {actorTemplatePath} from '../consts.js';
 import {TestableActorSheet} from '../utils/testable-actor-sheet.js';
 
-/** The Basic Character class is the entry point for Player Characters,
- * NPCs, and creatures. */
+/** BasicCharacterSheet. The Basic Character class is the entry point
+ * for Player Characters, NPCs, and creatures.
+ */
 export default class BasicCharacterSheet extends TestableActorSheet {
   /**
    * defaultOptions. A static getter meant to override the parent
@@ -13,7 +14,7 @@ export default class BasicCharacterSheet extends TestableActorSheet {
     return {
       ...super.defaultOptions,
       classes: ['character'],
-      template: `${actorTemplatePath}/basic-character.html`,
+      template: `${actorTemplatePath}/basic-character-sheet.html`,
     };
   }
 }

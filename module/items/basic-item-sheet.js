@@ -2,10 +2,10 @@ import {itemTemplatePath} from '../consts.js';
 import {TestableItemSheet} from '../utils/testable-item-sheet.js';
 
 /**
- * BasicItem. The Worlds Without Number Basic Item Sheet from
+ * BasicItemSheet. The Worlds Without Number Basic Item Sheet from
  * which all other ItemSheets will extend.
  */
-export default class BasicItem extends TestableItemSheet {
+export default class BasicItemSheet extends TestableItemSheet {
   /**
    * defaultOptions. A static getter meant to override the parent
    * defaultOptions within ItemSheet.
@@ -14,8 +14,7 @@ export default class BasicItem extends TestableItemSheet {
   static get defaultOptions() {
     return {
       ...super.defaultOptions,
-      classes: ['sheet', 'item'],
-      template: `${itemTemplatePath}/basic-item.html`,
+      template: `${itemTemplatePath}/basic-item-sheet.html`,
     };
   }
 }
