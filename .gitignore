@@ -106,3 +106,5 @@ dist
 # vi fragments
 *.swp
 *.swo
+
+local-migrate
