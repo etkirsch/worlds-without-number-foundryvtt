@@ -1,4 +1,26 @@
 { 
+  "Actor": {
+    "types": [
+      "character"
+    ],
+    "templates": {
+      "vitals": {
+        "health": 9
+      },
+      "attributes": {
+        "strength": 10,
+        "dexterity": 10,
+        "constitution": 10,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma" : 10
+      }
+    },
+    "character": {
+      "templates": ["vitals", "attributes"],
+      "health": 7
+    }
+  },
   "Item": {
     "types": [
       "basicItem",
