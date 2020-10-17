@@ -85,4 +85,17 @@ export default class SkillBuilder {
 
     return new Skill(this.config[key]);
   }
+
+  /**
+   * buildAll. Builds all skills based on the keys indicated in the
+   * system skillConfiguration. Returns a list of Skills alphabetized
+   * by name. Bubbles up any exception from buildSkill.
+   * @return {object} A list of skills alphabetized by name
+   */
+  buildAll() {
+    return Object
+        .keys(this.config)
+        .map((skillKey) => this.buildSkill(skillKey))
+        .sort((left, right) => Skill.compare(left, right));
+  }
 }

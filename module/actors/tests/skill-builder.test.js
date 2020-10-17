@@ -49,4 +49,37 @@ describe('SkillBuilder', () => {
       expect(builtSkill.name).toBe(skillName);
     });
   });
+
+  describe('buildAll', () => {
+    it('returns an empty list when no skills are in configuration', () => {
+      const config = {
+        skillConfiguration: {},
+      };
+
+      const builder = new SkillBuilder(config);
+      const skills = builder.buildAll();
+      expect(skills.length).toBe(0);
+    });
+
+    // Note: If this is flaky for you, it is highly likely you have some issue
+    // with the Skill.compare method.
+    it('returns a list of alphabetized skills from configuration', () => {
+      const config = {
+        skillConfiguration: {
+          'beta': {
+            name: 'beta',
+          },
+          'alpha': {
+            name: 'alpha',
+          },
+        },
+      };
+
+      const builder = new SkillBuilder(config);
+      const skills = builder.buildAll();
+      expect(skills.length).toBe(2);
+      expect(skills[0].name).toBe('alpha');
+      expect(skills[1].name).toBe('beta');
+    });
+  });
 });
