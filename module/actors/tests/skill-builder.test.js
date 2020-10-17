@@ -1,4 +1,5 @@
 import SkillBuilder from '../skill-builder.js';
+import Skill from '../skill.js';
 
 describe('SkillBuilder', () => {
   describe('constructor validation', () => {
@@ -44,6 +45,7 @@ describe('SkillBuilder', () => {
       };
       const builder = new SkillBuilder(config);
       const builtSkill = builder.buildSkill(key);
+      expect(builtSkill).toBeInstanceOf(Skill);
       expect(builtSkill.name).toBe(skillName);
     });
   });

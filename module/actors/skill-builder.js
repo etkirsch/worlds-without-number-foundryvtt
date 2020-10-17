@@ -1,3 +1,5 @@
+import Skill from './skill.js';
+
 /**
  * SkillBuilder. Builds a skill object (non-Foundry object) which
  * is returned to the player in a one-to-many relationship. The
@@ -18,6 +20,8 @@
  *       // etc. This can be empty as well.
  *     ],
  *   }
+ *
+ * SkillBuilder should be used as a singleton.
  */
 export default class SkillBuilder {
   /**
@@ -79,6 +83,6 @@ export default class SkillBuilder {
       throw new Error(SkillBuilder.noMatchingSkillKeyErrorText(key));
     }
 
-    return this.config[key];
+    return new Skill(this.config[key]);
   }
 }
