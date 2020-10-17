@@ -2,9 +2,9 @@ import Skill from '../skill.js';
 
 describe('Skill', () => {
   describe('compare', () => {
-    const alpha = new Skill({ name: 'alpha' })
-    const alphaCapitalized = new Skill({ name: 'Alpha' })
-    const beta = new Skill({ name: 'beta' })
+    const alpha = new Skill({name: 'alpha'});
+    const alphaCapitalized = new Skill({name: 'Alpha'});
+    const beta = new Skill({name: 'beta'});
 
     it('returns -1 if left name comes before right name', () => {
       const comparisonResult = Skill.compare(alpha, beta);

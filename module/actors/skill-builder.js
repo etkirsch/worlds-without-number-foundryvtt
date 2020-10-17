@@ -31,7 +31,7 @@ export default class SkillBuilder {
    */
   static get ImproperConfigFormat() {
     return 'The config parameter passed into SkillBuilder is either' +
-        'falsy or lacks the skillConfiguration field.';
+        ' falsy or lacks the skillConfiguration field.';
   }
 
   /**
