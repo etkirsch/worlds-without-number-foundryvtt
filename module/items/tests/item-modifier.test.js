@@ -1,11 +1,11 @@
-import ItemModifier from '../item-modifier.js';
+import ItemModifierSheet from '../item-modifier-sheet.js';
 import {itemTemplatePath} from '../../consts.js';
 
-describe('ItemModifier', () => {
+describe('ItemModifierSheet', () => {
   describe('defaultOptions', () => {
     it('has appropriate overrides', () => {
-      expect(ItemModifier.defaultOptions.template)
-          .toBe(`${itemTemplatePath}/item-modifier.html`);
+      expect(ItemModifierSheet.defaultOptions.template)
+          .toBe(`${itemTemplatePath}/item-modifier-sheet.html`);
     });
   });
 });

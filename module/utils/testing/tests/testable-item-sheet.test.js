@@ -7,4 +7,12 @@ describe('TestableItemSheet', () => {
           .toBe('mocked');
     });
   });
+
+  describe('getData', () => {
+    it('has basic mocked data', () => {
+      const sheet = new TestableItemSheet();
+      const data = sheet.getData();
+      expect(data.basic).toBe('mockedGetDataResult');
+    });
+  });
 });

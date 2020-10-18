@@ -1,11 +1,11 @@
 import {itemTemplatePath} from '../consts.js';
-import BasicItem from './basic-item.js';
+import BasicItemSheet from './basic-item-sheet.js';
 
 /**
- * ItemModifier. A Modifier that can be applied to any class
+ * ItemModifierSheet. A Modifier that can be applied to any class
  * derived from basic-item.js
  */
-export default class ItemModifier extends BasicItem {
+export default class ItemModifierSheet extends BasicItemSheet {
   /**
    * defaultOptions. A static getter meant to override the parent
    * defaultOptions within ItemSheet.
@@ -14,8 +14,7 @@ export default class ItemModifier extends BasicItem {
   static get defaultOptions() {
     return {
       ...super.defaultOptions,
-      classes: ['sheet', 'item'],
-      template: `${itemTemplatePath}/item-modifier.html`,
+      template: `${itemTemplatePath}/item-modifier-sheet.html`,
     };
   }
 }
