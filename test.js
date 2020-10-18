@@ -11,5 +11,4 @@ process.on('unhandledRejection', (err) => {
 });
 
 let argv = process.argv.slice(2);
-argv.push("--verbose");
 jest.run(argv);

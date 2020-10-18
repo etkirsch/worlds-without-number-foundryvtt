@@ -2,6 +2,9 @@ import {actorTemplatePath} from '../consts.js';
 import {TestableActorSheet} from '../utils/testable-actor-sheet.js';
 import SkillBuilder from './skill-builder.js';
 import {WorldsConfiguration} from '../worlds-configuration.js';
+import DialogBuilder from '../utils/builders/dialog-builder.js';
+import {BasicNoButton, BasicYesButton} from './templates/button-templates.js';
+import {SkillRollTemplate} from './templates/dialog-templates.js';
 
 /** BasicCharacterSheet. The Basic Character class is the entry point
  * for Player Characters, NPCs, and creatures.
@@ -39,10 +42,30 @@ export default class BasicCharacterSheet extends TestableActorSheet {
    */
   getData({config=WorldsConfiguration}) {
     const sheetData = super.getData();
-    debugger;
 
-    // TOOD: Replace this with the singleton
+    // TODO: Replace this with the singleton
     const skills = this.getSkills(config);
+
+    // TODO: Remove after we know dialogues work
+    const builder = new DialogBuilder();
+    builder
+        .withTitle('Sample Title')
+        .withContent(SkillRollTemplate)
+        .withButton({
+          ...BasicNoButton,
+          key: 'noButton',
+          callback: () => console.log('clicked No'),
+        })
+        .withButton({
+          ...BasicYesButton,
+          key: 'yesButton',
+          callback: () => console.log('clicked Yes'),
+        })
+        .withCloseCallBack(() => {
+          console.log('Dialog closed.');
+        })
+        .build()
+        .render(true);
 
     return {
       foundryData: sheetData,
