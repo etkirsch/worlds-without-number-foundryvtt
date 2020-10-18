@@ -10,6 +10,7 @@ class MockedHtml {
    */
   constructor() {
     this._activeListeners = {};
+    this.mockedValues = {};
   }
 
   /**
@@ -20,7 +21,15 @@ class MockedHtml {
    * @return {Object} The mocked page element
    */
   find(selectorText) {
-    const pageElement = new MockPageElement(selectorText);
+    const mockedValue = (selectorText in this.mockedValues) ?
+      this.mockedValues[selectorText] :
+      null;
+
+    if (selectorText in this._activeListeners) {
+      return this._activeListeners[selectorText];
+    }
+
+    const pageElement = new MockPageElement(selectorText, mockedValue);
     this._activeListeners[selectorText] = pageElement;
     return pageElement;
   }
@@ -34,10 +43,12 @@ export class MockPageElement {
   /**
    * constructor. Generic constructor which takes a selectorText.
    * @param {string} selectorText Selector text for this page element
+   * @param {any} mockedValue The mocked value for val()
    */
-  constructor(selectorText) {
+  constructor(selectorText, mockedValue) {
     this.selectorText = selectorText;
     this.callbackFunction = null;
+    this._mockedValue = mockedValue;
   }
 
   /**
@@ -47,6 +58,22 @@ export class MockPageElement {
    */
   click(callbackFunction) {
     this.callbackFunction = callbackFunction;
+  }
+
+  /**
+   * mimicClickEvent. Mocks a click event, calling the callback function.
+   * @param {HTML} html The MockedHtml object which owns this.
+   */
+  mimicClickEvent(html) {
+    this.callbackFunction(html);
+  }
+
+  /**
+   * val. Mocked function return a value as specified in MockedHtml.
+   * @return {any} The mocked value specified for this selector
+   */
+  val() {
+    return this._mockedValue;
   }
 }
 

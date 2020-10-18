@@ -14,6 +14,7 @@ class MockedDialog {
     this.buttons = options.buttons;
     this.default = options.default;
     this.close = options.close;
+    this._wasDisplayed = false;
   }
 
   /**
@@ -22,6 +23,20 @@ class MockedDialog {
    * @param {bool} shouldRender Indicates if the dialog should display
    */
   render(shouldRender) {
+    if (shouldRender) {
+      this._wasDisplayed = true;
+    }
+  }
+
+  /**
+   * callButton. Mimics the event of a button being clicked. For use
+   * with testing only. Executes the callback of the button, so use
+   * jest.fn where necessary.
+   * @param {string} key The key of the button to be clicked
+   * @param {HTML} html TestableHTML object injected into the callback
+   */
+  callButton(key, html) {
+    this.buttons[key].callback(html);
   }
 };
 

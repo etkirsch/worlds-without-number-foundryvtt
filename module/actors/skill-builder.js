@@ -83,7 +83,7 @@ export default class SkillBuilder {
       throw new Error(SkillBuilder.noMatchingSkillKeyErrorText(key));
     }
 
-    return new Skill(this.config[key]);
+    return new Skill({...this.config[key], key});
   }
 
   /**

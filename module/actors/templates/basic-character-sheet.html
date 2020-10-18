@@ -32,4 +32,9 @@
       <input type="number" name="data.charisma" value="{{actor.data.charisma}}" data-dtype="Number" />
     </div>
   </section>
+  <section class="skills-body">
+    {{#each actor.skills as |skill|}}
+      <label class="{{skill.key}}">{{skill.name}}</label>
+    {{/each}}
+  </section>
 </form>
