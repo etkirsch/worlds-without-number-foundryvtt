@@ -116,7 +116,7 @@ export default class BasicCharacterSheet extends TestableActorSheet {
           .attributeLabelSelectorText(attribute.name);
 
       html.find(selectorText)
-          .click(() => this.clickAttribute(selectorText));
+          .click(() => this.clickAttribute(attribute.name));
     });
   }
 }
