@@ -1,5 +1,6 @@
 import BasicCharacterSheet from '../basic-character-sheet.js';
 import {TestableRoll} from '../../utils/testing/testable-roll.js';
+import {TestableHtml} from '../../utils/testing/testable-html.js';
 import {actorTemplatePath} from '../../consts.js';
 
 describe('BasicCharacterSheet', () => {
@@ -90,6 +91,21 @@ describe('BasicCharacterSheet', () => {
       sheet.clickAttribute('strength', _testableRoll);
       expect(_testableRoll._numberOfRolls).toBe(1);
       expect(_testableRoll._wasDisplayed).toBe(true);
+    });
+  });
+
+  describe('activateListeners', () => {
+    it('registers all attribute labels in .attributes-body', () => {
+      const sheet = new BasicCharacterSheet();
+      const html = new TestableHtml();
+      sheet.activateListeners(html, mockedConfig);
+      expect(Object.keys(html._activeListeners)).toHaveLength(2);
+      expect(BasicCharacterSheet
+          .attributeLabelSelectorText('strength') in html._activeListeners)
+          .toBe(true);
+      expect(BasicCharacterSheet
+          .attributeLabelSelectorText('dexterity') in html._activeListeners)
+          .toBe(true);
     });
   });
 });

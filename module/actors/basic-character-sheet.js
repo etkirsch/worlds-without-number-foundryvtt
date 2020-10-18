@@ -23,6 +23,16 @@ export default class BasicCharacterSheet extends TestableActorSheet {
   }
 
   /**
+   * attributeLabelSelectorText. Creates the label selector text for an
+   * attribute type. This must match up to this Sheet's HTML template.
+   * @param {string} attribute The requested attribute, e.g. 'strength'
+   * @return {string} The selector text for the requested attribute
+   */
+  static attributeLabelSelectorText(attribute) {
+    return `.attributes-body label.${attribute}`;
+  }
+
+  /**
    * getSkills. Aggregate all skills pertinent to this character sheet.
    * @param {Object} config Either the WorldsConfiguration or a mocked config
    * @return {Object} An array of Skill Objects in alphabetical order
@@ -96,11 +106,17 @@ export default class BasicCharacterSheet extends TestableActorSheet {
    * activateListeners. Finds specific tags within the actor's template and
    * creates listeners for events.
    * @param {HTML} html This actor's computed template
+   * @param {object} config The configuration file used as an override
    */
-  activateListeners(html) {
+  activateListeners(html, config=WorldsConfiguration) {
     super.activateListeners(html);
 
-    html.find('.attributes-body label.strength')
-        .click(() => this.clickAttribute('strength'));
+    config.attributeConfiguration.forEach((attribute) => {
+      const selectorText = BasicCharacterSheet
+          .attributeLabelSelectorText(attribute.name);
+
+      html.find(selectorText)
+          .click(() => this.clickAttribute(selectorText));
+    });
   }
 }

@@ -76,6 +76,12 @@ class MockedActorSheet {
       owner: this.owner,
     };
   }
+
+  /**
+   * activateListeners. Does nothing here.
+   * @param {HTML} html This actor's computed template
+   */
+  activateListeners(html) {}
 }
 
 export const TestableActorSheet = (typeof ActorSheet === 'undefined') ?
