@@ -168,47 +168,47 @@ describe('BasicCharacterSheet', () => {
 
     it('gets the correct values for rolling with attributes', () => {
       const _testableRoll = new TestableRoll('2d6');
-      const skillKey = 'administer';
+      const skill = mockedConfig.skillConfiguration['administer'];
       const attribute = 'strength';
-      sheet.performSkillCheck({skillKey, attribute, _testableRoll});
+      sheet.performSkillCheck({skill, attribute, _testableRoll});
       expect(_testableRoll.data.attrMod).toBe(1);
       expect(_testableRoll.data.skillMod).toBe(2);
     });
 
     it('gets the correct values for rolling without attributes', () => {
       const _testableRoll = new TestableRoll('2d6');
-      const skillKey = 'administer';
+      const skill = mockedConfig.skillConfiguration['administer'];
       const attribute = '';
-      sheet.performSkillCheck({skillKey, attribute, _testableRoll});
+      sheet.performSkillCheck({skill, attribute, _testableRoll});
       expect(_testableRoll.data.attrMod).toBe(-1);
       expect(_testableRoll.data.skillMod).toBe(2);
     });
 
     it('does the roll, then displays a message', () => {
       const _testableRoll = new TestableRoll('2d6');
-      const skillKey = 'administer';
+      const skill = mockedConfig.skillConfiguration['administer'];
       const attribute = 'strength';
-      sheet.performSkillCheck({skillKey, attribute, _testableRoll});
+      sheet.performSkillCheck({skill, attribute, _testableRoll});
       expect(_testableRoll._numberOfRolls).toBe(1);
       expect(_testableRoll._wasDisplayed).toBe(true);
     });
 
     it('formats the message with attributes appropriately', () => {
       const _testableRoll = new TestableRoll('2d6');
-      const skillKey = 'administer';
+      const skill = mockedConfig.skillConfiguration['administer'];
       const attribute = 'strength';
-      sheet.performSkillCheck({skillKey, attribute, _testableRoll});
+      sheet.performSkillCheck({skill, attribute, _testableRoll});
       expect(_testableRoll._messageData.flavor)
-          .toBe(sheet.skillCheckMessageText(skillKey, attribute));
+          .toBe(sheet.skillCheckMessageText(skill, attribute));
       expect(_testableRoll._messageData.speaker.data.actor).toBe(sheet.actor);
     });
 
     it('formats the message without attributes appropriately', () => {
       const _testableRoll = new TestableRoll('2d6');
-      const skillKey = 'administer';
-      sheet.performSkillCheck({skillKey, _testableRoll});
+      const skill = mockedConfig.skillConfiguration['administer'];
+      sheet.performSkillCheck({skill, _testableRoll});
       expect(_testableRoll._messageData.flavor)
-          .toBe(sheet.skillCheckMessageText(skillKey));
+          .toBe(sheet.skillCheckMessageText(skill));
       expect(_testableRoll._messageData.speaker.data.actor).toBe(sheet.actor);
     });
   });

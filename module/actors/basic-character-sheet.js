@@ -158,14 +158,14 @@ export default class BasicCharacterSheet extends TestableActorSheet {
    * performSkillCheck. Takes a skill and attribute (which can also be
    * 'no-attribute' for none that are relevant) and performs a skill
    * check with those modifiers.
-   * @param {string} skillKey The key of the skill being used
+   * @param {string} skill The skill in question
    * @param {string} attribute The Key of the attribute being used
    * @param {number} target The target value for this check
    * @param {Object} _testableRoll Testing only. See mocked-roll.js
    */
-  performSkillCheck({skillKey, attribute, target, _testableRoll}) {
+  performSkillCheck({skill, attribute, target, _testableRoll}) {
     const {data} = this.actor.data;
-    const skillModifier = data[skillKey];
+    const skillModifier = data[skill.key];
     const attributeModifier = (attribute in data) ?
       this.actor.constructor.attributeModifier(data[attribute]) :
       -1;
@@ -182,7 +182,7 @@ export default class BasicCharacterSheet extends TestableActorSheet {
 
     roll.roll();
     roll.toMessage({
-      flavor: this.skillCheckMessageText(skillKey, attribute),
+      flavor: this.skillCheckMessageText(skill, attribute),
       speaker: TestableChatMessage.getSpeaker({actor: this.actor}),
     });
   }
@@ -203,7 +203,7 @@ export default class BasicCharacterSheet extends TestableActorSheet {
       key: 'roll',
       callback: (html) => {
         const attribute = html.find('[name="attribute"]').val();
-        this.performSkillCheck({skillKey: skill.key, attribute, _testableRoll});
+        this.performSkillCheck({skill, attribute, _testableRoll});
       },
     };
 
