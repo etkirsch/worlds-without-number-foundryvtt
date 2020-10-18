@@ -1,5 +1,5 @@
 import {itemTemplatePath} from '../consts.js';
-import {TestableItemSheet} from '../utils/testable-item-sheet.js';
+import {TestableItemSheet} from '../utils/testing/testable-item-sheet.js';
 
 /**
  * BasicItemSheet. The Worlds Without Number Basic Item Sheet from

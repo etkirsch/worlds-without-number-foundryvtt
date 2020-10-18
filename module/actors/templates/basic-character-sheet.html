@@ -6,4 +6,10 @@
     <h3>Health</h3>
     <input type="number" name="data.health" value="{{actor.data.health}}" data-dtype="Number" />
   </section>
+  <section class="attributes-body">
+    <div>
+      <label class="strength">Strength {{actor.computed.strengthModifier}}</label>
+      <input type="number" name="data.strength" value="{{actor.data.strength}}" data-dtype="Number" />
+    </div>
+  </section>
 </form>

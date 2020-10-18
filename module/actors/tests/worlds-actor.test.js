@@ -12,4 +12,27 @@ describe('WorldsActor', () => {
       });
     });
   });
+
+  describe('getTemplateModifier', () => {
+    it('returns properly formatted negative string', () => {
+      let result = WorldsActor.getTemplateModifier(-1);
+      expect(result).toBe('-1');
+
+      result = WorldsActor.getTemplateModifier(-10);
+      expect(result).toBe('-10');
+    });
+
+    it('returns properly formatted positive string', () => {
+      let result = WorldsActor.getTemplateModifier(1);
+      expect(result).toBe('+1');
+
+      result = WorldsActor.getTemplateModifier(10);
+      expect(result).toBe('+10');
+    });
+
+    it('returns ZeroTemplateText when zero', () => {
+      const result = WorldsActor.getTemplateModifier(0);
+      expect(result).toBe(WorldsActor.ZeroTemplateText);
+    });
+  });
 });

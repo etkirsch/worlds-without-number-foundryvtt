@@ -1,9 +1,18 @@
-import {TestableActor} from '../utils/testable-actor.js';
+import {TestableActor} from '../utils/testing/testable-actor.js';
 
 /**
  * WorldsActor. The main Worlds Without Number actor class.
  */
 export default class WorldsActor extends TestableActor {
+  /**
+   * ZeroTemplateText. The string used when a template needs to use a
+   * modifier of zero.
+   * @return {string} This text
+   */
+  static get ZeroTemplateText() {
+    return '--';
+  }
+
   /**
    * attributeModifier. Static method used to quickly pinpoint
    * the modifier value for a given score.
@@ -24,5 +33,24 @@ export default class WorldsActor extends TestableActor {
       return 1;
     }
     return 2;
+  }
+
+  /**
+   * getTemplateModifier. Returns a string prepended with - or + depending
+   * on the value of the input. If the value is zero, the static value
+   * ZeroTemplateText is returned instead.
+   * @param {Number} value The value for the template modifier
+   * @return {string} A string for use in a template.
+   */
+  static getTemplateModifier(value) {
+    if (value > 0) {
+      return `+${value}`;
+    }
+
+    if (value < 0) {
+      return value.toString();
+    }
+
+    return WorldsActor.ZeroTemplateText;
   }
 }

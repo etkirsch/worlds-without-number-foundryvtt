@@ -1,8 +1,13 @@
 import BasicCharacterSheet from '../basic-character-sheet.js';
+import {TestableRoll} from '../../utils/testing/testable-roll.js';
 import {actorTemplatePath} from '../../consts.js';
 
 describe('BasicCharacterSheet', () => {
   const mockedConfig = {
+    attributeConfiguration: [
+      {name: 'strength'},
+      {name: 'dexterity'},
+    ],
     skillConfiguration: {
       'beta': {
         name: 'beta',
@@ -50,6 +55,41 @@ describe('BasicCharacterSheet', () => {
       expect(data.actor.skills).toHaveLength(2);
       expect(data.actor.skills[0].name).toBe('alpha');
       expect(data.actor.skills[1].name).toBe('beta');
+    });
+  });
+
+  describe('getTemplateAttributeModifiers', () => {
+    it('returns a list of properly formatted attribute modifiers', () => {
+      const sheet = new BasicCharacterSheet();
+      sheet.actor.data.strength = 14;
+      sheet.actor.data.dexterity = 10;
+      const modifiers = sheet.getTemplateAttributeModifiers(mockedConfig);
+
+      expect(modifiers).toHaveLength(2);
+      expect(modifiers[0]).toBe('+1');
+      expect(modifiers[1]).toBe('--');
+    });
+  });
+
+  describe('clickAttribute', () => {
+    const sheet = new BasicCharacterSheet();
+    sheet.actor.data.data.strength = 14;
+    sheet.actor.data.data.dexterity = 6;
+
+    it('gets the correct values for rolling', () => {
+      const _testableRoll = new TestableRoll('2d6');
+      sheet.clickAttribute('strength', _testableRoll);
+      expect(_testableRoll.data.mod).toBe(1);
+
+      sheet.clickAttribute('dexterity', _testableRoll);
+      expect(_testableRoll.data.mod).toBe(-1);
+    });
+
+    it('does the roll, then displays a message', () => {
+      const _testableRoll = new TestableRoll('2d6');
+      sheet.clickAttribute('strength', _testableRoll);
+      expect(_testableRoll._numberOfRolls).toBe(1);
+      expect(_testableRoll._wasDisplayed).toBe(true);
     });
   });
 });
