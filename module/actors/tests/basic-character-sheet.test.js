@@ -37,6 +37,22 @@ describe('BasicCharacterSheet', () => {
     });
   });
 
+  describe('attributeCheckMessageText', () => {
+    it('returns the correct text', () => {
+      const sheet = new BasicCharacterSheet();
+      sheet.actor.data.name = 'Baudin';
+      const text = sheet.attributeCheckMessageText('strength');
+      expect(text).toBe('Baudin rolls a strength check...');
+    });
+
+    it('handles vowels appropriately', () => {
+      const sheet = new BasicCharacterSheet();
+      sheet.actor.data.name = 'Baudin';
+      const text = sheet.attributeCheckMessageText('intelligence');
+      expect(text).toBe('Baudin rolls an intelligence check...');
+    });
+  });
+
   describe('getData', () => {
     it('contains all relevant sheet data keys', () => {
       const sheet = new BasicCharacterSheet();
@@ -76,6 +92,7 @@ describe('BasicCharacterSheet', () => {
     const sheet = new BasicCharacterSheet();
     sheet.actor.data.data.strength = 14;
     sheet.actor.data.data.dexterity = 6;
+    sheet.actor.data.name = 'clickAttributeTester';
 
     it('gets the correct values for rolling', () => {
       const _testableRoll = new TestableRoll('2d6');
@@ -91,6 +108,14 @@ describe('BasicCharacterSheet', () => {
       sheet.clickAttribute('strength', _testableRoll);
       expect(_testableRoll._numberOfRolls).toBe(1);
       expect(_testableRoll._wasDisplayed).toBe(true);
+    });
+
+    it('formats the message appropriately', () => {
+      const _testableRoll = new TestableRoll('2d6');
+      sheet.clickAttribute('strength', _testableRoll);
+      expect(_testableRoll._messageData.flavor)
+          .toBe(sheet.attributeCheckMessageText('strength'));
+      expect(_testableRoll._messageData.speaker.data.actor).toBe(sheet.actor);
     });
   });
 

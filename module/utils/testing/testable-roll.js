@@ -17,6 +17,7 @@ class MockedRoll {
     this._numberOfRolls = 0;
     this._queuedResults = queuedResults || [-1];
     this._wasDisplayed = false;
+    this._messageData = {};
   }
 
   /**
@@ -31,9 +32,11 @@ class MockedRoll {
 
   /**
    * toMessage. Notes that the roll message has been displayed.
+   * @param {object} messageData The messageData for this message
    */
-  toMessage() {
+  toMessage(messageData) {
     this._wasDisplayed = true;
+    this._messageData = messageData;
   }
 
   /**

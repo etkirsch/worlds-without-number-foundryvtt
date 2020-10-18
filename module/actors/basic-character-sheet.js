@@ -1,5 +1,6 @@
 import {TestableActorSheet} from '../utils/testing/testable-actor-sheet.js';
 import {TestableRoll} from '../utils/testing/testable-roll.js';
+import {TestableChatMessage} from '../utils/testing/testable-chat-message.js';
 import {actorTemplatePath} from '../consts.js';
 import SkillBuilder from './skill-builder.js';
 import {WorldsConfiguration} from '../worlds-configuration.js';
@@ -30,6 +31,20 @@ export default class BasicCharacterSheet extends TestableActorSheet {
    */
   static attributeLabelSelectorText(attribute) {
     return `.attributes-body label.${attribute}`;
+  }
+
+  /**
+   * attributeCheckMessageText. The flavor text displayed when a PC
+   * executes an attribute check.
+   * @param {string} attribute The requested attribute, e.g. 'strength'
+   * @return {string} The flavor text for the ChatMessage
+   */
+  attributeCheckMessageText(attribute) {
+    const {name} = this.actor.data;
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    const optionalN = vowels.some((x) => x === attribute[0]) ? 'n': '';
+
+    return `${name} rolls a${optionalN} ${attribute} check...`;
   }
 
   /**
@@ -99,14 +114,18 @@ export default class BasicCharacterSheet extends TestableActorSheet {
       new TestableRoll('2d6 + @mod', {mod});
 
     roll.roll();
-    roll.toMessage();
+    roll.toMessage({
+      flavor: this.attributeCheckMessageText(attributeType),
+      speaker: TestableChatMessage.getSpeaker({actor: this.actor}),
+    });
   }
 
   /**
    * activateListeners. Finds specific tags within the actor's template and
    * creates listeners for events.
    * @param {HTML} html This actor's computed template
-   * @param {object} config The configuration file used as an override
+   * @param {object} config <optional> The configuration file used as an
+   * override
    */
   activateListeners(html, config=WorldsConfiguration) {
     super.activateListeners(html);
