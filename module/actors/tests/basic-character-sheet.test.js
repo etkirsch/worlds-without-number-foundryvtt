@@ -1,7 +1,7 @@
 import BasicCharacterSheet from '../basic-character-sheet.js';
 import DialogBuilder from '../../utils/builders/dialog-builder.js';
-import {TestableRoll} from '../../utils/testing/testable-roll.js';
-import {TestableHtml} from '../../utils/testing/testable-html.js';
+import {TestableRoll} from '../../testing/mocks/testable-roll.js';
+import {TestableHtml} from '../../testing/mocks/testable-html.js';
 import {actorTemplatePath} from '../../consts.js';
 
 describe('BasicCharacterSheet', () => {

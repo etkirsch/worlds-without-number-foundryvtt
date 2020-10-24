@@ -1,14 +1,18 @@
+import {TestableBase} from './testable-base.js';
+
 /**
  * Mocked Dialog. Used for testing dialogues that are conveyed to the user.
  * This class allows for drilling into what buttons were clicked and what
  * values were selected.
  */
-class MockedDialog {
+class MockedDialog extends TestableBase {
   /**
    * constructor. Takes options similar to the way new Dialog() does.
    * @param {Object} options The options to build the MockedDialog
    */
   constructor(options) {
+    super();
+
     this.title = options.title;
     this.content = options.content;
     this.buttons = options.buttons;

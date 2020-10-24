@@ -1,5 +1,5 @@
+import {TestableItemSheet} from '../testing/mocks/testable-item-sheet.js';
 import {itemTemplatePath} from '../consts.js';
-import {TestableItemSheet} from '../utils/testing/testable-item-sheet.js';
 
 /**
  * BasicItemSheet. The Worlds Without Number Basic Item Sheet from
@@ -14,6 +14,8 @@ export default class BasicItemSheet extends TestableItemSheet {
   static get defaultOptions() {
     return {
       ...super.defaultOptions,
+      width: 560,
+      height: 500,
       template: `${itemTemplatePath}/basic-item-sheet.html`,
     };
   }

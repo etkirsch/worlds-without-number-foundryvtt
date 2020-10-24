@@ -10,5 +10,6 @@ process.on('unhandledRejection', (err) => {
   throw err;
 });
 
-let argv = process.argv.slice(2);
+const argv = process.argv.slice(2);
+argv.push('--watch');
 jest.run(argv);

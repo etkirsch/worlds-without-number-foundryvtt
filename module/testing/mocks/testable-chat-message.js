@@ -1,8 +1,9 @@
+import {TestableBase} from './testable-base.js';
 /**
  * MockedChatMessage. Allows for test control of things such as dictating
  * the speaker of a message.
  */
-class MockedChatMessage {
+class MockedChatMessage extends TestableBase {
   /**
    * getSpeaker. Logs a getSpeaker message and returns a mocked object
    * for use in testing.

@@ -1,0 +1,12 @@
+<form>
+  <div class="skill-option" data-id="{{item.id}}">
+    <h3>{{item.name}}</h3>
+    <label>Number of Skill Selections</label>
+    <input 
+        type="number"
+        class="pick"
+        data-dtype="Number"
+        value={{#if item.data.data.pick}}{{item.data.data.pick}}
+        {{else}}{{item.data.pick}}{{/if}} />
+  </div>
+</form>

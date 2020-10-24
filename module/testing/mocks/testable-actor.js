@@ -1,3 +1,5 @@
+import {TestableBase} from './testable-base.js';
+
 /**
  * MockedActor. Used for enabling Foundry Actor objects for
  * testing in jest. The export of this file checks whether or
@@ -5,13 +7,15 @@
  * MockedActor is returned. If not, the regular FoundryVTT
  * Actor is returned instead.
  */
-class MockedActor {
+class MockedActor extends TestableBase {
   /**
    * The options value of this constructor allows you to pass in any
    * mocked data. Use at your own risk.
    * @param {object} options Optional mocked data options
    */
   constructor(options={}) {
+    super();
+
     const mockToken = options.mockToken || {};
     const mockData = options.mockData || {
       '_data': 'mocked',

@@ -1,4 +1,4 @@
-import {TestableDialog} from '../testing/testable-dialog.js';
+import {TestableDialog} from '../../testing/mocks/testable-dialog.js';
 
 /**
  * DialogBuilder. Simplifies the process for building and maintaining

@@ -1,3 +1,4 @@
+import {TestableBase} from './testable-base.js';
 import WorldsActor from '../../actors/worlds-actor.js';
 
 /**
@@ -7,13 +8,15 @@ import WorldsActor from '../../actors/worlds-actor.js';
  * MockedActorSheet is returned. If not, the regular FoundryVTT
  * ActorSheet is returned instead.
  */
-class MockedActorSheet {
+class MockedActorSheet extends TestableBase {
   /**
    * The options value of this constructor allows you to pass in any
    * mocked data. Use at your own risk.
    * @param {object} options Optional mocked data options
    */
   constructor(options={}) {
+    super();
+
     const mockOptions = {
       baseApplication: 'ActorSheet',
       classes: 'character',

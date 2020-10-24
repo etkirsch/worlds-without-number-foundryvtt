@@ -1,10 +1,12 @@
+import {TestableBase} from './testable-base.js';
+
 /**
  * MockedRoll. Used for enabling Foundry Roll objects for testing in
  * Jest. The export of this file checks whether or not the environment
  * is a test environment. if so, the MockedRoll is returned. If not, the
  * regular FoundryVTT Roll is returned instead.
  */
-class MockedRoll {
+class MockedRoll extends TestableBase {
   /**
    * constructor. See https://foundryvtt.com/api/Roll.html for more details
    * @param {string} formula The string formula to parse
@@ -12,6 +14,8 @@ class MockedRoll {
    * @param {Array} queuedResults Array of numbers that are returned in sequence
    */
   constructor(formula, data, queuedResults) {
+    super();
+
     this.formula = formula;
     this.data = data;
     this._numberOfRolls = 0;

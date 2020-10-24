@@ -1,0 +1,39 @@
+<form class={{cssClass}}" autocomplete="off">
+  <header>
+    <input type="text" name="name" value="{{item.name}}" data-dtype="String" />
+  </header>
+
+	{{!-- Sheet Tab Navigation --}}
+	<nav class="sheet-tabs tabs" data-group="primary">
+		<a class="item" data-tab="description">Description</a>
+		<a class="item" data-tab="attributes">Attributes</a>
+	</nav>
+
+
+  <section class="sheet-body">
+    <div class="tab description" data-group="primary" data-tab="description">
+      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+    </div>
+
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      <label>Focus Level</label>
+      <div class="form-fields">
+        <input type="number" name="data.level" value="{{data.level}}" data-dtype="String" />
+      </div>
+
+      <div>
+        Acquired at Character Creation
+        <input type="checkbox" name="data.isAdvancement" value={{data.isAdvancement}}" data-dtype="Bool" />
+      </div>
+
+      <section class="skill-options">
+        <ul>
+          {{#each items as |option id|}}
+          <div>{{> "systems/worlds-without-number-foundryvtt/module/items/sub-items/templates/skill-option-sheet.html" item=option}}</div>
+          {{/each}}
+        </ul>
+      <button type="button" class="add-option">Add Option</button>
+      </section>
+    </div>
+  </section>
+</form>

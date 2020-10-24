@@ -1,14 +1,17 @@
+import {TestableBase} from './testable-base.js';
+
 /**
  * Mocked HTML. Used for testing functions like ActorSheet's
  * activateListeners method. This tracks where listeners have been set
  * (based on selector text) and also the functions tied to them.
  */
-class MockedHtml {
+class MockedHtml extends TestableBase {
   /**
    * constructor. Takes no options. Establishes a dictionary with key
    * selector text and value the callback function
    */
   constructor() {
+    super();
     this._activeListeners = {};
     this.mockedValues = {};
   }
@@ -44,11 +47,18 @@ export class MockPageElement {
    * constructor. Generic constructor which takes a selectorText.
    * @param {string} selectorText Selector text for this page element
    * @param {any} mockedValue The mocked value for val()
+   * @param {object} mockedData The mocked data for .data()
    */
-  constructor(selectorText, mockedValue) {
+  constructor(selectorText, mockedValue, mockedData={}) {
+    this.eventsRegistered = {
+      click: 0,
+      change: 0,
+      blur: 0,
+    };
     this.selectorText = selectorText;
     this.callbackFunction = null;
     this._mockedValue = mockedValue;
+    this._mockedData = mockedData;
   }
 
   /**
@@ -57,6 +67,17 @@ export class MockPageElement {
    * @param {Object} callbackFunction The function to call on click event
    */
   click(callbackFunction) {
+    this.eventsRegistered.click++;
+    this.callbackFunction = callbackFunction;
+  }
+
+  /**
+   * change. Registers a callback function as a listener for this page
+   * element.
+   * @param {Object} callbackFunction The function to call on click event
+   */
+  change(callbackFunction) {
+    this.eventsRegistered.change++;
     this.callbackFunction = callbackFunction;
   }
 
@@ -74,6 +95,15 @@ export class MockPageElement {
    */
   val() {
     return this._mockedValue;
+  }
+
+  /**
+   * data. Returns a mocked datatag.
+   * @param {string} dataTag requested data tag
+   * @return {object} the value of the data tag, if set.
+   */
+  data(dataTag) {
+    return this._mockedData[dataTag];
   }
 }
 

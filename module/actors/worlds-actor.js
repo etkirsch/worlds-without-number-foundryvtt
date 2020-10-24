@@ -1,4 +1,4 @@
-import {TestableActor} from '../utils/testing/testable-actor.js';
+import {TestableActor} from '../testing/mocks/testable-actor.js';
 
 /**
  * WorldsActor. The main Worlds Without Number actor class.
